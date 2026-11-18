@@ -1,1 +1,116 @@
+// da 0:00
+
+// NOZIONI BASE
+
+#include <stdio.h>
+
+int main (){
+
+  return 0;    // 0 = program works, number =/ 0, indicates an error usually
+}
+
+printf("First message!\n");    // stampa testo, \n significa che va a capo
+
+// VARIABILI
+
+int age = 20;
+
+printf("You are %d years old", age);    // aggiunge valore di age dove si trova %d,
+                                        // %d significa (valore) decimale
+
+float gpa = 2.5
+
+printf("Your gpa is %f", gpa)    // aggiunge valore contenuto nella var gpa, però di tipo float, utilizzo %f
+
+// pausa, min 20:10
+
+
+
+
+
+// da 5:56:00
+
+// PUNTATORI
+
+int age = 20;
+printf("%p", &age);    // uso %p per stampare un indirizzo del puntatore, 
+                      // ci metto age affiancato a sx da &,
+                      // che ci permette di stampare il suo indirizzo
+
+int* pAge =  &age;
+printf("%p", pAge);    // scrivere questi due è == a scrivere quelli prima
+
+// mettiamo caso io voglia cambiare la mia età per riferimento:
+
+void birthday (int* age){    // va dichiarato normalmente prima del main,
+                             // sto puntando all'indirizzo di age
+
+  (*age)++;    // direference of age, so 25+1
+}
+
+// esempio di programma con questo:
+
+void birthday (int* age);
+
+int main (){
+
+  int age = 25;
+  int* pAge = &age;    // indirizzo age contenuto in pAge
+
+  birthday(pAge);
+
+  printf("You are %d years old", age);
+
+  return 0;
+}
+
+void birthday(int* age){
+
+  (*age)++;
+}
+
+// WRITE FILES
+
+// datatype: FILE, nomi: p+nomefile, ex: pFile
+
+#include <stdio.h>
+
+int main (){
+
+  FILE *pFile = fopen("output.txt", "w");    // fopen stands for: file open
+                                             // 1st argument: name file
+                                             // 2nd argument: "w" write mode, "r" read mode
+
+  if(pFile == NULL){    // controllo se ho creato con successo il file
+
+    printf("Error opening file\n");
+
+    return 1;
+  }
+
+  fclose(pFile);    // chiude file, sempre se apri, dentro: nome file reference
+
+// pausa, 6:06:10
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
