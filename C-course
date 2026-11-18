@@ -27,8 +27,8 @@ printf("Your gpa is %f", gpa)    // aggiunge valore contenuto nella var gpa, per
 
 
 
-
 // da 5:56:00
+
 
 // PUNTATORI
 
@@ -69,7 +69,9 @@ void birthday(int* age){
   (*age)++;
 }
 
-// WRITE FILES
+
+// WRITE FILE
+
 
 // datatype: FILE, nomi: p+nomefile, ex: pFile
 
@@ -93,9 +95,108 @@ int main (){
   return 0;
 }
   
-char text[] = "NEVER GONNA GIVE YOU UP\nNEVER GONNA LET YOU DOWN!";
+char text[] = "NEVER GONNA GIVE YOU UP\nNEVER GONNA LET YOU DOWN!";    // testo che aggiungo al file
 
 fprintf(pFile, "%s", text);    // fprintf, ossia file printf, %s significa string
+
+File *pfile = fopen("C:\\>Users\\HP\\Desktop\\output.txt", "w");    // persorso in cui
+                                                                    // creo: output.txt
+                                                                    // percorso può essere
+                                                                    // relativo o assoluto
+
+
+// READ FILE
+
+
+// supponiamo di avere un file già creato chiamato: input.txt
+// scriviamo: 
+// Roses are red
+// Violets are blue
+// I cant be mad
+// Because i got you
+
+int main(){
+
+  FILE *pfile = fopen("input.txt", "r");    // apro file in lettura (read) "r", percorso relativo
+
+  char buffer[1024] = {0};    // temporarily stores data for us to read (in this case)
+                              // need to specify the size, 1024 bytes = 1 kB
+                              // è un array di char
+                              // ci mostra tutto il paragrafo, e non una lettera alla volta
+                              // ma se troppo grande, spreco memoria
+
+  if(pFile == NULL){    // verifico di aver aperto il file correttamente
+
+    pritf("Could not open file\n");
+
+    return 1;
+  }
+  
+  while(fgets(buffer, sizeof(buffer), pFile) != NULL){    // per leggere file
+                                                          // dentro a fgets mi serve:
+                                                          // array buffer,
+                                                          // dimensioni del buffer
+                                                          // e puntatore al nome file
+
+    printf("%s", buffer);    // stampo cosa c'è nel buffer
+  }
+  
+  fclose(pFile);    // chiudo file
+}
+
+FILE *pfile = fopen("C:\\Users\\HP\\Desktop\\input.txt", "r");    // percorso assoluto
+
+
+// MALLOC
+
+
+// stands for memory allocation,
+// alloca dinamicamente uno specifico numero di byte in memoria
+// necessita di #include <stdlib.h>
+
+int number = 0;
+
+printf("Enter the number of grades: ");    // es, 6 voti
+
+scanf("%d", &number);
+
+char* grades = malloc(number * sizeof(char));    // sizeof(char) == dimensioni di char, 1 byte, 6*1
+                                                 // sizeof(int) == dimensioni int, 4 byte, 6*4
+                                                 // affittiamo parte di memoria dallo heap
+                                                 // (di solito la memoria viene dallo stack)
+                                                 // malloc returns a pointer to where that memory
+                                                 // is located that we reserved
+
+if(grades == NULL){    // controllo per verificare di non star direferenziando un puntatore NULL
+                       // segmentation fault: trying to access to a memory location not allowed
+
+  printf("Memory allocation failed!\n");
+
+  return 1;    // 1 funziona come exit code, vuol dire che c'è un problema
+}
+
+for (int i = 0; i < number; i++){    // per quanti numeri metterà l'utente
+
+  printf("Enter grade #%d: ", i + 1);    // prompt
+
+  scanf(" %c", &grades[i]);    // %c sta per char
+}
+
+for (int i = 0; i < number; i++){
+
+  printf("%c ", grades[i]);    // stampo ogni voto
+}
+
+free(grades);    // returning the "rented" space back to the OS
+
+grades = NULL;    // avoids "dangling" (penzolanti) pointers
+
+
+// CALLOC
+
+
+
+
   
 
 
