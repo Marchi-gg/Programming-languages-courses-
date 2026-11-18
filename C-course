@@ -191,7 +191,7 @@ free(grades);    // returning the "rented" space back to the OS
 
 grades = NULL;    // avoids "dangling" (penzolanti) pointers
 
-
+// pausa, min 6:24:46
 // CALLOC
 
 
