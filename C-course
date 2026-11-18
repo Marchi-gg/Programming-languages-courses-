@@ -90,8 +90,14 @@ int main (){
 
   fclose(pFile);    // chiude file, sempre se apri, dentro: nome file reference
 
-// pausa, 6:06:10
+  return 0;
+}
   
+char text[] = "NEVER GONNA GIVE YOU UP\nNEVER GONNA LET YOU DOWN!";
+
+fprintf(pFile, "%s", text);    // fprintf, ossia file printf, %s significa string
+  
+
 
 
 
